@@ -1,103 +1,133 @@
-import Image from "next/image";
+"use client";
+// import Image from "next/image";
+import React from "react";
+import Header from "@/components/Header";
+import ChapterCard from "@/components/ChapterCard";
+import {
+  Box,
+  Select,
+  MenuItem,
+  TextField,
+  InputAdornment,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const chapters = [
+    {
+      id: "1",
+      title: "序章【希望の灯火の術】愛する彼ともう一度結ばれる",
+      subtitle: "希望の灯火の術",
+      description: "愛する彼ともう一度結ばれる",
+      progress: 0,
+      imagePath: "/tukikage-1.png",
+    },
+    {
+      id: "2",
+      title: "第一章【導きの術】七つの光が照らす、復縁への扉",
+      subtitle: "導きの術",
+      description: "七つの光が照らす、復縁への扉",
+      progress: 0,
+      imagePath: "/tukikage-1.png",
+    },
+    {
+      id: "3",
+      title: "第二章【浄化の術】過去との訣別とまことの我",
+      subtitle: "浄化の術",
+      description: "過去との訣別とまことの我",
+      progress: 0,
+      imagePath: "/tukikage-1.png",
+    },
+    {
+      id: "4",
+      title: "第三章【魅力開花の術】彼を惹きつけるオーラの醸成",
+      subtitle: "魅力開花の術",
+      description: "彼を惹きつけるオーラの醸成",
+      progress: 0,
+      imagePath: "/tukikage-1.png",
+    },
+    {
+      id: "5",
+      title: "第四章【静寂の術】戦略的間合いの取り方",
+      subtitle: "静寂の術",
+      description: "戦略的間合いの取り方",
+      progress: 0,
+      imagePath: "/tukikage-1.png",
+    },
+    {
+      id: "6",
+      title: "第五章【見極めの術】彼の心を読み解く千里眼の修得",
+      subtitle: "見極めの術",
+      description: "彼の心を読み解く千里眼の修得",
+      progress: 0,
+      imagePath: "/tukikage-1.png",
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <>
+      <Header />
+      <Box sx={{ p: 4, pt: 10, mx: 26 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mb: 4,
+          }}
+        >
+          <Select
+            defaultValue="all"
+            size="small"
+            sx={{
+              minWidth: 120,
+              "& .MuiSelect-select": {
+                py: 1,
+              },
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            <MenuItem value="all">全て</MenuItem>
+          </Select>
+          <TextField
+            placeholder="検索"
+            size="small"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        </Box>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(3, 1fr)",
+            },
+            gap: 3,
+            width: "100%",
+            margin: "0 auto",
+          }}
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          {chapters.map((chapter) => (
+            <Box
+              key={chapter.id}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+                minWidth: 0,
+              }}
+            >
+              <ChapterCard chapter={chapter} />
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </>
   );
 }
