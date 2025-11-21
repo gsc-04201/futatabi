@@ -31,6 +31,7 @@ const chapterData: Record<
   },
   // ...他の章...
 };
+console.log("testUpdate");
 
 export default async function ChapterPage({
   params,
